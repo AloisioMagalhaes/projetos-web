@@ -13,7 +13,13 @@
     "build": "lerna run build",
     "test": "lerna run test",
     "publish": "lerna publish",
-    "commitlint": "commitlint --config commitlint.config.js"
+    "commit": "git cz",
+    "commitlint": "commitlint --config commitlint.config.js",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write .",
+    "precommit": "lint-staged",
+    "prepush": "npm-run-all -s commitlint test build",
+    "postmerge": "npm run bootstrap"
   },
   "config": {
     "commitizen": {
@@ -22,7 +28,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint --config commitlint.config.js"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run prepush"
     }
   },
   "lint-staged": {
@@ -53,6 +60,7 @@
     "husky": "^9.1.7",
     "lerna": "^8.1.9",
     "lint-staged": "^15.4.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
