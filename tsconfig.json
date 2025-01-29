@@ -44,8 +44,6 @@
     "allowUnusedLabels": false, // Good practice.
     "allowUnreachableCode": false, // Good practice.
     "moduleDetection": "force", // Ensures consistent module detection.
-    "experimentalDecorators": true, // Only needed if you use decorators.
-    "emitDecoratorMetadata": true // Only needed if you use decorators.
   },
   "include": [
     "packages/**/src/**/*.ts", // Include all .ts files in your packages' src directories.
