@@ -1,0 +1,32 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Ou a versão do Node.js que você utiliza
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run npm start (and Webpack)
+        run: npm run start
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
+        with:
+          publish_dir: ./projetos-web/packages/website1/dist
+          token: ${{ secrets.GITHUB_TOKEN }}
