@@ -1,0 +1,61 @@
+{
+  "name": "projetos-web",
+  "version": "1.0.0",
+  "description": "compartilhamento de código, gerenciar dependências e automatizar processos",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "publish": "lerna publish",
+    "commitlint": "commitlint --config commitlint.config.js"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --config commitlint.config.js"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "keywords": [
+    "react",
+    "nodejs",
+    "typescript",
+    "monorepo",
+    "webapp",
+    "api"
+  ],
+  "author": "ALOISIO",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/node": "^22.12.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.19.0",
+    "husky": "^9.1.7",
+    "lerna": "^8.1.9",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.7.3"
+  }
+}
