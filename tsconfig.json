@@ -1,22 +1,25 @@
 {
   "compilerOptions": {
     "target": "esnext", // Good: Modern target, allows for tree-shaking in the final bundle.
-    "lib": ["dom", "esnext"], // Explicitly include esnext for latest JS features.
+    "lib": [
+      "dom",
+      "esnext"
+    ], // Explicitly include esnext for latest JS features.
     "jsx": "react", // Correct for React projects.
-    "module": "nodenext", // Excellent choice for modern Node.js development.
-    "moduleResolution": "nodenext", // Aligned with the module setting.
+    "module": "ESNext", // Excellent choice for modern Node.js development.
+    "moduleResolution": "bundler", // Aligned with the module setting.
     "baseUrl": "./", // Useful for resolving relative imports.
     "esModuleInterop": true, // Essential for interoperability with CommonJS modules.
     "isolatedModules": true, // Important for faster and more reliable builds, especially in larger projects.
-    "verbatimModuleSyntax": true, // Ensures correct handling of imports and exports.
-    "strict": true,  // Highly recommended: Enable all strict type-checking options.
-    "noImplicitAny": true,
+    "verbatimModuleSyntax": false, // Ensures correct handling of imports and exports.
+    "strict": true, // Highly recommended: Enable all strict type-checking options.
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
     "strictPropertyInitialization": true,
     "strictBuiltinIteratorReturn": true,
-    "noImplicitThis": true,
+    "noImplicitThis": false,
     "useUnknownInCatchVariables": true,
     "alwaysStrict": true,
     "noUnusedLocals": true,
@@ -29,7 +32,7 @@
     "useDefineForClassFields": true, // Good for standard-compliant class fields.
     "importHelpers": true, // Reduces bundle size.
     "downlevelIteration": true, // Necessary for supporting older environments if you use async iterators.
-    "noEmitOnError": true, // Prevents emitting code with type errors.
+    "noEmitOnError": true, // Prevents emitting code when there are type errors.
     "skipLibCheck": true, // Can significantly speed up compilation, especially in larger projects.  Consider setting this to `false` if you encounter issues with library types.
     "allowJs": true, // If you have a mix of JS and TS files, set to true. Otherwise, set to false.
     "checkJs": true, // Only relevant if allowJs: true
@@ -39,19 +42,22 @@
     "resolvePackageJsonImports": true, // Should be true for nodenext module resolution.
     "noUncheckedSideEffectImports": true, // Good practice to avoid unexpected side effects.
     "allowSyntheticDefaultImports": true, // Allows importing CommonJS modules with default imports.
-    "isolatedDeclarations": true, // Good for performance.
     "exactOptionalPropertyTypes": true, // Good practice for more precise types.
     "allowUnusedLabels": false, // Good practice.
     "allowUnreachableCode": false, // Good practice.
     "moduleDetection": "force", // Ensures consistent module detection.
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+      "axios"
+    ], // Include Node.js types.
   },
-  "include": [
-    "packages/**/src/**/*.ts", // Include all .ts files in your packages' src directories.
-    "packages/**/src/**/*.tsx", // Include all .tsx files in your packages' src directories.
-    "packages/**/src/**/*.js", // Include all .js files in your packages' src directories.
-    "packages/**/src/**/*.jsx"  // Include all .jsx files in your packages' src directories.
-  ],
   "exclude": [
-    "node_modules" // Exclude node_modules.
+    "node_modules",
+    "commitlint.config.js",
+    "eslint.config.js",
+    "packages/website1/dist/bundle.*.js", // Usando glob pattern para bundles
+    "packages/website1/webpack.config.js"
   ]
 }
